@@ -45,7 +45,7 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover-lift transition scroll-reveal">
                     <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                         <!-- Image Column (Uniform 5/12 width for all programs) -->
-                        <div class="lg:col-span-5 relative min-h-[280px] lg:min-h-full overflow-hidden bg-slate-100 scroll-reveal-img">
+                        <div class="lg:col-span-5 relative min-h-[260px] aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-full overflow-hidden bg-slate-100 scroll-reveal-img">
                             <img src="<?php echo htmlspecialchars($program['image_url']); ?>" alt="<?php echo htmlspecialchars($program['name']); ?>" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500">
                             <div class="absolute top-4 left-4 bg-amber-500 text-amber-950 font-bold px-3 py-1.5 rounded-xl text-xs shadow-md">
                                 <?php echo htmlspecialchars($program['age_group']); ?>

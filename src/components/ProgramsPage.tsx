@@ -73,7 +73,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({ programs, onNavigate
                 className="bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 items-stretch group"
               >
                 {/* Image Section (5/12 width ratio) */}
-                <div className="lg:col-span-5 relative min-h-[280px] lg:min-h-full overflow-hidden bg-slate-100">
+                <div className="lg:col-span-5 relative min-h-[260px] aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-full overflow-hidden bg-slate-100">
                   <SafeImage
                     src={program.image_url}
                     alt={program.name}

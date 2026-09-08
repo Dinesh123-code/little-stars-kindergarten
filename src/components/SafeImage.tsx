@@ -45,7 +45,7 @@ export const SafeImage: React.FC<SafeImageProps> = ({
   }[focalPosition] || 'object-center';
 
   return (
-    <div className={`relative overflow-hidden bg-slate-100 ${containerClassName}`}>
+    <div className={`relative overflow-hidden bg-slate-100 w-full h-full ${containerClassName}`}>
       {/* Subtle background placeholder shimmer while loading */}
       {!isLoaded && (
         <div className="absolute inset-0 bg-gradient-to-r from-slate-100 via-slate-200 to-slate-100 animate-pulse" />
@@ -60,7 +60,7 @@ export const SafeImage: React.FC<SafeImageProps> = ({
         referrerPolicy="no-referrer"
         onLoad={() => setIsLoaded(true)}
         onError={handleError}
-        className={`w-full h-full object-cover ${focalClass} transition-opacity duration-300 ${
+        className={`w-full h-full object-cover block ${focalClass} transition-opacity duration-300 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         } ${className}`}
       />

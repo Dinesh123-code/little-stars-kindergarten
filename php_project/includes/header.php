@@ -155,10 +155,79 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
                 opacity: 1 !important;
             }
         }
+        /* Preloader Overlay System */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 500ms ease-out, visibility 500ms ease-out;
+        }
+
+        #preloader.preloader-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        @keyframes starPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.15) rotate(8deg); opacity: 0.85; }
+        }
+
+        .preloader-star {
+            width: 68px;
+            height: 68px;
+            background: #f59e0b;
+            color: #451a03;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            font-weight: 900;
+            box-shadow: 0 12px 28px -6px rgba(245, 158, 11, 0.45);
+            animation: starPulse 1.2s ease-in-out infinite;
+        }
+
+        .preloader-dots span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #f59e0b;
+            margin: 0 3px;
+            animation: dotsBounce 1.4s infinite ease-in-out both;
+        }
+
+        .preloader-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .preloader-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes dotsBounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
     </style>
     <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="bg-amber-50/20 text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Page Preloading Animation Screen -->
+    <div id="preloader">
+        <div class="preloader-star">★</div>
+        <div style="font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 22px; color: #0f172a; margin-top: 18px; tracking: -0.5px;">Little Stars</div>
+        <div style="font-size: 11px; font-weight: 700; color: #d97706; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px;">Kindergarten & Nursery</div>
+        <div class="preloader-dots" style="margin-top: 22px;">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
 
     <!-- Top Announcement Bar -->
     <div class="bg-amber-500 text-amber-950 text-xs font-semibold py-2 px-4">

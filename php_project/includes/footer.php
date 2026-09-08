@@ -116,9 +116,23 @@
                     }
                 });
             } else {
-                document.querySelectorAll('.scroll-reveal, .scroll-reveal-img').forEach(el => el.classList.add('is-revealed'));
+        // Hide Preloading Animation on Window Load
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(function() {
+                    preloader.classList.add('preloader-hidden');
+                }, 350);
             }
-        })();
+        });
+
+        // Fallback: Ensure preloader hides even if load event takes too long
+        setTimeout(function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('preloader-hidden')) {
+                preloader.classList.add('preloader-hidden');
+            }
+        }, 3000);
     </script>
 </body>
 </html>

@@ -33,6 +33,16 @@ export default function App() {
 
   useEffect(() => {
     refreshData();
+
+    // Hide preloader animation screen
+    const timer = setTimeout(() => {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.classList.add('preloader-hidden');
+      }
+    }, 350);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Scroll to top on page transition

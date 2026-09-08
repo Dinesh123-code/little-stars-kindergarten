@@ -77,7 +77,12 @@
         </div>
     </footer>
 
-    <!-- Initialize Lucide Icons, Mobile Menu & IntersectionObserver Scroll Reveal -->
+    <!-- Floating Back To Top Button -->
+    <button id="backToTopBtn" aria-label="Scroll back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Initialize Lucide Icons, Mobile Menu, Scroll Reveal & Progress Bar -->
     <script>
         lucide.createIcons();
         const menuBtn = document.getElementById('mobileMenuBtn');
@@ -119,6 +124,36 @@
             } else {
                 document.querySelectorAll('.scroll-reveal, .scroll-reveal-img, .story-heading, .story-body, .reveal-left, .reveal-right, .reveal-up').forEach(el => el.classList.add('is-revealed'));
             }
+
+            // Scroll Progress Bar & Back-to-Top Button Listener
+            window.addEventListener('scroll', function() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+
+                const progressBar = document.getElementById('scrollProgressBar');
+                if (progressBar) {
+                    progressBar.style.width = scrolled + '%';
+                }
+
+                const backBtn = document.getElementById('backToTopBtn');
+                if (backBtn) {
+                    if (winScroll > 260) {
+                        backBtn.classList.add('is-visible');
+                    } else {
+                        backBtn.classList.remove('is-visible');
+                    }
+                }
+            }, { passive: true });
+
+            const backBtn = document.getElementById('backToTopBtn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        })();
+
         // Hide Preloading Animation on Window Load
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');

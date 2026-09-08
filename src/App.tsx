@@ -50,6 +50,29 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
+  // Scroll progress bar and floating Back-to-Top listener
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      
+      const progressBar = document.getElementById('scrollProgressBar');
+      if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+      }
+
+      setShowBackToTop(winScroll > 260);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Scroll Reveal IntersectionObserver Engine for React views
   useEffect(() => {
     const selector = '.scroll-reveal, .scroll-reveal-img, .story-heading, .story-body, .reveal-left, .reveal-right, .reveal-up';
@@ -179,6 +202,18 @@ export default function App() {
 
       {/* Global Footer */}
       <Footer onNavigate={handleNavigate} />
+
+      {/* Floating Back To Top Button */}
+      <button
+        id="backToTopBtn"
+        className={showBackToTop ? 'is-visible' : ''}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll back to top"
+      >
+        <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M12 4l-8 8h5v8h6v-8h5z" />
+        </svg>
+      </button>
     </div>
   );
 }

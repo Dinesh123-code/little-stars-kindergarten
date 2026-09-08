@@ -19,8 +19,60 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        html { scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         h1, h2, h3, h4, .font-display { font-family: 'Quicksand', sans-serif; }
+
+        /* Top Scroll Progress Bar */
+        #scrollProgressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3.5px;
+            width: 0%;
+            background: linear-gradient(90deg, #f59e0b, #ec4899, #3b82f6);
+            z-index: 100000;
+            transition: width 80ms var(--ease-out-smooth);
+        }
+
+        /* Floating Back To Top Button */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background-color: #f59e0b;
+            color: #451a03;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px -4px rgba(245, 158, 11, 0.4);
+            z-index: 9990;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate3d(0, 16px, 0);
+            transition: opacity 300ms var(--ease-out-smooth),
+                        transform 300ms var(--ease-out-smooth),
+                        visibility 300ms var(--ease-out-smooth),
+                        background-color 200ms ease;
+        }
+
+        #backToTopBtn.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translate3d(0, 0, 0);
+        }
+
+        #backToTopBtn:hover {
+            background-color: #d97706;
+            color: #ffffff;
+            transform: translate3d(0, -3px, 0);
+        }
 
         /* ==========================================================================
            Refined Intentional & Performance-Optimized Motion System
@@ -266,6 +318,9 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
     <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="bg-amber-50/20 text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Top Scroll Progress Bar -->
+    <div id="scrollProgressBar"></div>
 
     <!-- Page Preloading Animation Screen -->
     <div id="preloader">

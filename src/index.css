@@ -19,6 +19,10 @@
   --color-surface-warm: #FFF7FB;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   color: #1B2138;
@@ -28,6 +32,56 @@ body {
 h1, h2, h3, h4, .font-display {
   font-family: 'Fredoka', cursive, system-ui, sans-serif;
   letter-spacing: -0.01em;
+}
+
+/* Top Scroll Progress Bar */
+#scrollProgressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #ED2E84, #FFC42E, #29A8E0);
+  z-index: 100000;
+  transition: width 80ms var(--ease-out-smooth);
+}
+
+/* Floating Back To Top Button */
+#backToTopBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background-color: #ED2E84;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px -4px rgba(237, 46, 132, 0.4);
+  z-index: 9990;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 16px, 0);
+  transition: opacity 300ms var(--ease-out-smooth),
+              transform 300ms var(--ease-out-smooth),
+              visibility 300ms var(--ease-out-smooth),
+              background-color 200ms ease;
+}
+
+#backToTopBtn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+}
+
+#backToTopBtn:hover {
+  background-color: #D11E6F;
+  transform: translate3d(0, -3px, 0);
 }
 
 /* Custom Scrollbar */

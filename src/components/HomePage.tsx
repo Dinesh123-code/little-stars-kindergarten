@@ -224,10 +224,10 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
       </section>
 
       {/* 5. Facilities Preview */}
-      <section className="py-16 bg-[#F6F9FF] border-b border-line">
+      <section className="py-16 bg-[#F6F9FF] border-b border-line scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          <div className="text-center max-w-2xl mx-auto space-y-3">
+          <div className="text-center max-w-2xl mx-auto space-y-3 story-heading">
             <span className="text-xs font-bold text-[#29A8E0] uppercase tracking-wider">Safe &amp; Modern Campus</span>
             <h2 className="text-3xl sm:text-4xl font-display font-black text-[#1F2A66]">
               Campus Facilities &amp; Security
@@ -238,12 +238,12 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {INITIAL_FACILITIES.slice(0, 6).map((fac) => (
+            {INITIAL_FACILITIES.slice(0, 6).map((fac, idx) => (
               <div
                 key={fac.id}
-                className="bg-white rounded-3xl border border-line overflow-hidden shadow-xs hover:shadow-lg transition-all"
+                className={`bg-white rounded-3xl border border-line overflow-hidden shadow-xs hover:shadow-lg transition-all scroll-reveal stagger-${(idx % 3) + 1}`}
               >
-                <div className="aspect-[16/10] overflow-hidden bg-slate-100">
+                <div className="aspect-[16/10] overflow-hidden bg-slate-100 scroll-reveal-img">
                   <SafeImage
                     src={fac.image}
                     alt={fac.title}
@@ -280,10 +280,10 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
       </section>
 
       {/* 6. Why Choose Us */}
-      <section className="py-16 bg-white border-b border-line">
+      <section className="py-16 bg-white border-b border-line scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          <div className="text-center max-w-2xl mx-auto space-y-3">
+          <div className="text-center max-w-2xl mx-auto space-y-3 story-heading">
             <span className="text-xs font-bold text-[#ED2E84] uppercase tracking-wider">Parent Trust</span>
             <h2 className="text-3xl sm:text-4xl font-display font-black text-[#1F2A66]">
               Why Parents Choose Little Stars
@@ -294,7 +294,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3">
+            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3 scroll-reveal stagger-1">
               <div className="w-10 h-10 rounded-xl bg-pink-100 text-[#ED2E84] flex items-center justify-center font-bold">
                 1
               </div>
@@ -304,7 +304,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3">
+            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3 scroll-reveal stagger-2">
               <div className="w-10 h-10 rounded-xl bg-amber-100 text-[#FFC42E] flex items-center justify-center font-bold">
                 2
               </div>
@@ -314,7 +314,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3">
+            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3 scroll-reveal stagger-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-100 text-[#5BB836] flex items-center justify-center font-bold">
                 3
               </div>
@@ -324,7 +324,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3">
+            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3 scroll-reveal stagger-4">
               <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#29A8E0] flex items-center justify-center font-bold">
                 4
               </div>
@@ -334,7 +334,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3">
+            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3 scroll-reveal stagger-5">
               <div className="w-10 h-10 rounded-xl bg-purple-100 text-[#8B3FB0] flex items-center justify-center font-bold">
                 5
               </div>
@@ -344,7 +344,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3">
+            <div className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-3 scroll-reveal stagger-1">
               <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
                 6
               </div>
@@ -359,10 +359,10 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
       </section>
 
       {/* 7. Gallery Preview */}
-      <section className="py-16 bg-[#F6F9FF] border-b border-line">
+      <section className="py-16 bg-[#F6F9FF] border-b border-line scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 story-heading">
             <div className="space-y-2">
               <span className="text-xs font-bold text-[#ED2E84] uppercase tracking-wider">Campus Life</span>
               <h2 className="text-3xl font-display font-black text-[#1F2A66]">
@@ -379,11 +379,11 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {INITIAL_GALLERY.slice(0, 4).map((item) => (
+            {INITIAL_GALLERY.slice(0, 4).map((item, idx) => (
               <div
                 key={item.id}
                 onClick={() => onNavigate('gallery')}
-                className="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 border border-line cursor-pointer group relative shadow-2xs"
+                className={`aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 border border-line cursor-pointer group relative shadow-2xs scroll-reveal-img stagger-${(idx % 4) + 1}`}
               >
                 <SafeImage
                   src={item.image}
@@ -402,10 +402,10 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
       </section>
 
       {/* 8. Parent Testimonials (Exact from littlestarskindergarten.online) */}
-      <section className="py-16 bg-white border-b border-line">
+      <section className="py-16 bg-white border-b border-line scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          <div className="text-center max-w-2xl mx-auto space-y-3">
+          <div className="text-center max-w-2xl mx-auto space-y-3 story-heading">
             <div className="inline-flex items-center gap-1 text-[#FFC42E]">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-[#FFC42E]" />
@@ -420,10 +420,10 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {INITIAL_TESTIMONIALS.slice(0, 3).map((test) => (
+            {INITIAL_TESTIMONIALS.slice(0, 3).map((test, idx) => (
               <div
                 key={test.id}
-                className="p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-4 flex flex-col justify-between shadow-2xs"
+                className={`p-6 rounded-3xl bg-[#F6F9FF] border border-line space-y-4 flex flex-col justify-between shadow-2xs scroll-reveal stagger-${(idx % 3) + 1}`}
               >
                 <div className="space-y-3">
                   <div className="flex items-center gap-1 text-[#FFC42E]">
@@ -453,7 +453,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
       </section>
 
       {/* 9. Admission CTA Banner */}
-      <section className="py-16 bg-[#FFF7FB]">
+      <section className="py-16 bg-[#FFF7FB] scroll-reveal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="bg-white rounded-3xl border border-pink-200 p-8 sm:p-12 shadow-xl space-y-6 relative overflow-hidden">
             
@@ -461,11 +461,11 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
               <Star className="w-8 h-8 fill-[#FFC42E]" />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 story-heading">
               <h2 className="text-3xl sm:text-4xl font-display font-black text-[#1F2A66]">
                 Give Your Child the Star Start They Deserve
               </h2>
-              <p className="text-sm sm:text-base text-[#5B6178] max-w-xl mx-auto">
+              <p className="text-sm sm:text-base text-[#5B6178] max-w-xl mx-auto story-body">
                 Limited enrollment slots available for the 2026–2027 Academic Year. 
                 Register your child's application online or visit our Coimbatore campus today.
               </p>
@@ -491,10 +491,10 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
       </section>
 
       {/* 10. Contact Information Strip */}
-      <section className="py-12 bg-white border-t border-line">
+      <section className="py-12 bg-white border-t border-line scroll-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F6F9FF] border border-line">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F6F9FF] border border-line scroll-reveal stagger-1">
               <div className="w-10 h-10 rounded-xl bg-pink-100 text-[#ED2E84] flex items-center justify-center shrink-0">
                 <MapPin className="w-5 h-5" />
               </div>
@@ -504,7 +504,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F6F9FF] border border-line">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F6F9FF] border border-line scroll-reveal stagger-2">
               <div className="w-10 h-10 rounded-xl bg-amber-100 text-[#FFC42E] flex items-center justify-center shrink-0">
                 <Phone className="w-5 h-5" />
               </div>
@@ -514,7 +514,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F6F9FF] border border-line">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F6F9FF] border border-line scroll-reveal stagger-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-100 text-[#5BB836] flex items-center justify-center shrink-0">
                 <Clock className="w-5 h-5" />
               </div>

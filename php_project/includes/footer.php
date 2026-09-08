@@ -106,7 +106,8 @@
                     });
                 }, observerOptions);
 
-                const targets = document.querySelectorAll('.scroll-reveal, .scroll-reveal-img');
+                const selector = '.scroll-reveal, .scroll-reveal-img, .story-heading, .story-body, .reveal-left, .reveal-right, .reveal-up';
+                const targets = document.querySelectorAll(selector);
                 targets.forEach(el => {
                     const rect = el.getBoundingClientRect();
                     if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -116,6 +117,8 @@
                     }
                 });
             } else {
+                document.querySelectorAll('.scroll-reveal, .scroll-reveal-img, .story-heading, .story-body, .reveal-left, .reveal-right, .reveal-up').forEach(el => el.classList.add('is-revealed'));
+            }
         // Hide Preloading Animation on Window Load
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');

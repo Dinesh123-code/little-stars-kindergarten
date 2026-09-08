@@ -52,8 +52,9 @@ export default function App() {
 
   // Scroll Reveal IntersectionObserver Engine for React views
   useEffect(() => {
+    const selector = '.scroll-reveal, .scroll-reveal-img, .story-heading, .story-body, .reveal-left, .reveal-right, .reveal-up';
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.scroll-reveal, .scroll-reveal-img').forEach(el => el.classList.add('is-revealed'));
+      document.querySelectorAll(selector).forEach(el => el.classList.add('is-revealed'));
       return;
     }
 
@@ -72,7 +73,7 @@ export default function App() {
       });
     }, observerOptions);
 
-    const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-img');
+    const revealElements = document.querySelectorAll(selector);
     revealElements.forEach(el => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom >= 0) {

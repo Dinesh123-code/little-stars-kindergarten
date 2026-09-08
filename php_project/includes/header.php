@@ -87,31 +87,75 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         }
 
         /* ==========================================================================
-           Scroll-Triggered Reveal Animations (IntersectionObserver System)
+        /* ==========================================================================
+           Storytelling Motion System (Progressive Viewport Reveal)
            ========================================================================== */
 
-        /* Base Reveal State: Sections, Cards & Headings (Fade + 30px upward movement) */
-        .scroll-reveal {
+        /* Base Reveal: Sections & General Containers (Upward 30px -> 0) */
+        .scroll-reveal,
+        .reveal-up {
             opacity: 0;
             transform: translate3d(0, 30px, 0);
-            transition: opacity 700ms var(--ease-out-smooth),
-                        transform 700ms var(--ease-out-smooth);
-            will-change: opacity, transform;
-            backface-visibility: hidden;
-        }
-
-        /* Image Reveal State (Fade + scale 0.95 -> 1) */
-        .scroll-reveal-img {
-            opacity: 0;
-            transform: scale3d(0.95, 0.95, 1);
             transition: opacity 750ms var(--ease-out-smooth),
                         transform 750ms var(--ease-out-smooth);
             will-change: opacity, transform;
             backface-visibility: hidden;
         }
 
+        /* Directional Variations (Used Sparingly for Storytelling Depth) */
+        .reveal-left {
+            opacity: 0;
+            transform: translate3d(-30px, 0, 0);
+            transition: opacity 750ms var(--ease-out-smooth),
+                        transform 750ms var(--ease-out-smooth);
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translate3d(30px, 0, 0);
+            transition: opacity 750ms var(--ease-out-smooth),
+                        transform 750ms var(--ease-out-smooth);
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+        }
+
+        /* Headings First -> Body Content Second Sequence */
+        .story-heading {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+            transition: opacity 600ms var(--ease-out-smooth),
+                        transform 600ms var(--ease-out-smooth);
+            will-change: opacity, transform;
+        }
+
+        .story-body {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+            transition: opacity 700ms var(--ease-out-smooth),
+                        transform 700ms var(--ease-out-smooth);
+            transition-delay: 140ms;
+            will-change: opacity, transform;
+        }
+
+        /* Image Reveal State (Fade + scale 0.95 -> 1) */
+        .scroll-reveal-img {
+            opacity: 0;
+            transform: scale3d(0.95, 0.95, 1);
+            transition: opacity 800ms var(--ease-out-smooth),
+                        transform 800ms var(--ease-out-smooth);
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+        }
+
         /* Triggered Active State when scrolled into viewport */
-        .scroll-reveal.is-revealed {
+        .scroll-reveal.is-revealed,
+        .reveal-up.is-revealed,
+        .reveal-left.is-revealed,
+        .reveal-right.is-revealed,
+        .story-heading.is-revealed,
+        .story-body.is-revealed {
             opacity: 1;
             transform: translate3d(0, 0, 0);
         }
@@ -121,16 +165,18 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
             transform: scale3d(1, 1, 1);
         }
 
-        /* Stagger Delays for Cards, Items & Grids */
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
-        .stagger-5 { transition-delay: 500ms; }
+        /* Sequential Card Stagger Delays */
+        .stagger-1 { transition-delay: 120ms; }
+        .stagger-2 { transition-delay: 240ms; }
+        .stagger-3 { transition-delay: 360ms; }
+        .stagger-4 { transition-delay: 480ms; }
+        .stagger-5 { transition-delay: 600ms; }
 
         /* Accessibility & No-JS Fallback */
         html.no-js .scroll-reveal,
-        html.no-js .scroll-reveal-img {
+        html.no-js .scroll-reveal-img,
+        html.no-js .story-heading,
+        html.no-js .story-body {
             opacity: 1 !important;
             transform: none !important;
             transition: none !important;
@@ -148,7 +194,9 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
             .hover-lift,
             .img-zoom-hover,
             .scroll-reveal,
-            .scroll-reveal-img {
+            .scroll-reveal-img,
+            .story-heading,
+            .story-body {
                 animation: none !important;
                 transform: none !important;
                 transition: none !important;

@@ -1,0 +1,6 @@
+{
+  "name": "Little Stars Kindergarten & Preschool",
+  "description": "Official responsive website for Little Stars Kindergarten featuring dynamic programs (Play Group, Nursery, LKG, UKG), online admissions enquiry system, activities, facilities, gallery, and administrative management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

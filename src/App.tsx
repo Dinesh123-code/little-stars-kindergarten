@@ -18,10 +18,10 @@ export default function App() {
   const [initialClassForAdmission, setInitialClassForAdmission] = useState<string | undefined>(undefined);
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
-  // State synchronized with database
-  const [programs, setPrograms] = useState<Program[]>([]);
-  const [admissions, setAdmissions] = useState<AdmissionEnquiry[]>([]);
-  const [contacts, setContacts] = useState<ContactEnquiry[]>([]);
+  // State synchronized with database (initialized synchronously to avoid empty initial render)
+  const [programs, setPrograms] = useState<Program[]>(() => dbService.getPrograms());
+  const [admissions, setAdmissions] = useState<AdmissionEnquiry[]>(() => dbService.getAdmissions());
+  const [contacts, setContacts] = useState<ContactEnquiry[]>(() => dbService.getContacts());
 
   // Load data from dbService on mount and when refreshed
   const refreshData = () => {
@@ -83,8 +83,8 @@ export default function App() {
 
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -50px 0px',
-      threshold: 0.08
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.05
     };
 
     const observer = new IntersectionObserver((entries, obs) => {
@@ -96,20 +96,34 @@ export default function App() {
       });
     }, observerOptions);
 
-    const revealElements = document.querySelectorAll(selector);
-    revealElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom >= 0) {
-        el.classList.add('is-revealed');
-      } else {
-        observer.observe(el);
-      }
+    const observeUnrevealed = () => {
+      const revealElements = document.querySelectorAll(selector);
+      revealElements.forEach(el => {
+        if (!el.classList.contains('is-revealed')) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom >= 0) {
+            el.classList.add('is-revealed');
+          } else {
+            observer.observe(el);
+          }
+        }
+      });
+    };
+
+    observeUnrevealed();
+
+    // Observe dynamic DOM changes (e.g. data updates or view tab changes)
+    const mutationObserver = new MutationObserver(() => {
+      observeUnrevealed();
     });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       observer.disconnect();
+      mutationObserver.disconnect();
     };
-  }, [currentPage]);
+  }, [currentPage, programs]);
 
   const handleNavigate = (page: PageView, extraParams?: { selectedClass?: string }) => {
     if (extraParams?.selectedClass) {

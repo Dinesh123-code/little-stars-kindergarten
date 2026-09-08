@@ -131,7 +131,7 @@ export const HomePage: React.FC<HomePageProps> = ({ programs, onNavigate }) => {
                 key={prog.id}
                 className={`bg-white rounded-3xl border border-line overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col group scroll-reveal stagger-${(idx % 4) + 1}`}
               >
-                <div className="aspect-[16/11] overflow-hidden relative bg-slate-100 scroll-reveal-img">
+                <div className="aspect-[16/11] overflow-hidden relative bg-slate-100">
                   <SafeImage
                     src={prog.image_url}
                     alt={prog.name}

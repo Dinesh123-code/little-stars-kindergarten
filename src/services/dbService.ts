@@ -8,6 +8,11 @@ const STORAGE_KEYS = {
   AUTH: 'littlestars_admin_session',
 };
 
+const RENDER_BASE_URL = (
+  (typeof import.meta !== 'undefined' && (import.meta.env?.VITE_RENDER_URL || import.meta.env?.VITE_API_URL)) ||
+  'https://little-stars-kindergarten.onrender.com'
+).replace(/\/$/, '');
+
 class DatabaseService {
   // In-memory caches for reliable state retention even across iframe sandbox quirks
   private cachedAdmissions: AdmissionEnquiry[] | null = null;
@@ -195,6 +200,20 @@ class DatabaseService {
       console.warn('localStorage write failed, using memory cache', e);
     }
 
+    // Asynchronously push to Render Backend API
+    fetch(`${RENDER_BASE_URL}/api/admissions.php`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && res.reference_no) {
+          newEnquiry.reference_no = res.reference_no;
+        }
+      })
+      .catch((e) => console.warn('Render API sync fallback:', e));
+
     // Broadcast change to all listening tabs/components
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('littlestars_admissions_changed', { detail: newEnquiry }));
@@ -279,6 +298,13 @@ class DatabaseService {
     } catch (e) {
       console.warn('localStorage write failed', e);
     }
+    // Asynchronously push to Render Backend API
+    fetch(`${RENDER_BASE_URL}/api/contact.php`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).catch((e) => console.warn('Render API contact sync fallback:', e));
+
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('littlestars_contacts_changed'));
     }

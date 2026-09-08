@@ -16,7 +16,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center max-w-3xl mx-auto space-y-4 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-[#ED2E84] text-xs font-bold uppercase tracking-wider">
             <Heart className="w-3.5 h-3.5 fill-[#ED2E84]" />
             <span>Our Heritage &amp; Philosophy</span>
@@ -34,7 +34,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
         {/* 2-Column Hero Story */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-6 scroll-reveal">
             <h2 className="text-3xl font-display font-black text-[#1F2A66]">
               A Nurturing Second Home in Coimbatore
             </h2>
@@ -49,12 +49,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-2xl bg-[#F6F9FF] border border-line">
+              <div className="p-4 rounded-2xl bg-[#F6F9FF] border border-line scroll-reveal stagger-1">
                 <div className="font-display font-black text-2xl text-[#ED2E84]">1:8</div>
                 <div className="text-xs font-bold text-[#1F2A66]">Faculty Ratio</div>
                 <div className="text-[11px] text-[#5B6178]">Individualized attention</div>
               </div>
-              <div className="p-4 rounded-2xl bg-[#F6F9FF] border border-line">
+              <div className="p-4 rounded-2xl bg-[#F6F9FF] border border-line scroll-reveal stagger-2">
                 <div className="font-display font-black text-2xl text-[#FFC42E]">100%</div>
                 <div className="text-xs font-bold text-[#1F2A66]">Phonics Fluency</div>
                 <div className="text-[11px] text-[#5B6178]">Jolly Phonics 42 sounds</div>
@@ -62,7 +62,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 scroll-reveal-img">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] bg-slate-100">
               <SafeImage
                 src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80"
@@ -76,7 +76,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
         {/* Vision & Mission Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 rounded-3xl bg-[#F6F9FF] border border-line space-y-4">
+          <div className="p-8 rounded-3xl bg-[#F6F9FF] border border-line space-y-4 scroll-reveal stagger-1">
             <div className="w-12 h-12 rounded-2xl bg-pink-100 text-[#ED2E84] flex items-center justify-center">
               <Compass className="w-6 h-6" />
             </div>
@@ -86,7 +86,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#F6F9FF] border border-line space-y-4">
+          <div className="p-8 rounded-3xl bg-[#F6F9FF] border border-line space-y-4 scroll-reveal stagger-2">
             <div className="w-12 h-12 rounded-2xl bg-amber-100 text-[#FFC42E] flex items-center justify-center">
               <Sparkles className="w-6 h-6" />
             </div>
@@ -98,7 +98,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* 4 Pillars of Pedagogical Excellence */}
-        <div className="space-y-8">
+        <div className="space-y-8 scroll-reveal">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl font-display font-black text-[#1F2A66]">
               Our Educational Pillars
@@ -109,7 +109,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-line shadow-xs space-y-3">
+            <div className="p-6 rounded-2xl bg-white border border-line shadow-xs space-y-3 scroll-reveal stagger-1">
               <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#29A8E0] flex items-center justify-center">
                 <BookOpen className="w-5 h-5" />
               </div>
@@ -119,7 +119,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-line shadow-xs space-y-3">
+            <div className="p-6 rounded-2xl bg-white border border-line shadow-xs space-y-3 scroll-reveal stagger-2">
               <div className="w-10 h-10 rounded-xl bg-pink-100 text-[#ED2E84] flex items-center justify-center">
                 <Heart className="w-5 h-5" />
               </div>
@@ -129,7 +129,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-line shadow-xs space-y-3">
+            <div className="p-6 rounded-2xl bg-white border border-line shadow-xs space-y-3 scroll-reveal stagger-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-100 text-[#5BB836] flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5" />
               </div>
@@ -139,7 +139,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-line shadow-xs space-y-3">
+            <div className="p-6 rounded-2xl bg-white border border-line shadow-xs space-y-3 scroll-reveal stagger-4">
               <div className="w-10 h-10 rounded-xl bg-purple-100 text-[#8B3FB0] flex items-center justify-center">
                 <Award className="w-5 h-5" />
               </div>
@@ -152,7 +152,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* CTA Strip */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#1F2A66] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#1F2A66] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl scroll-reveal">
           <div className="space-y-2 text-center md:text-left">
             <h3 className="text-2xl sm:text-3xl font-display font-black text-white">
               Ready to Explore Our Campus in Person?
